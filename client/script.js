@@ -100,7 +100,7 @@ const handleSubmit = async (e) => {
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim(); // trims any trailing spaces/'\n'
-
+    console.log(parsedData);
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();
@@ -115,4 +115,10 @@ form.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     handleSubmit(e);
   }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("hekko");
+  chatContainer.innerHTML += chatStripe(true, " ", "startt");
+  const messageDiv = document.getElementById("startt");
+  typeText(messageDiv, "hello there! Ask me anything in the chat box below.");
 });
